@@ -20,7 +20,7 @@ export class AppComponent {
             id: '2', authorId: '12',
             title: 'Christmas',
             text: 'Santa says _ho ho ho!_',
-            renderedText: 'Santa says <i>ho ho ho!</i>>'
+            renderedText: 'Santa says <i>ho ho ho!</i>'
         }
 
     ];
@@ -37,3 +37,6 @@ export class AppComponent {
 
 
 }
+
+
+// https://vsavkin.com/angular-2-template-syntax-5f2ee9f13c6a#.by0izmvbj

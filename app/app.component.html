@@ -10,6 +10,7 @@
     <div class="row">
         <div class="col-sm-4">
 
+            <!-- DOCUMENT LIST -->
             <div *ngIf="documents">
                 <ul class="list-group users-list">
                     <li class="list-group-item"
@@ -24,10 +25,12 @@
             <!-- <user-form (userCreated)="onUserCreated($event)"></user-form> -->
 
         </div>
-        <div class="col-sm-8">
-            <!-- <div [innerHTML]="{{documents[0].renderedText}}"> -->
 
-           {{activeDocument.text}}
+        <!-- DOCUMENT CONTENT -->
+        <div class="col-sm-8">
+            <div class="rendered-document"[innerHTML]=activeDocument.renderedText></div>
+
+           <!-- {{activeDocument.text}} -->
 
         </div>
     </div>
