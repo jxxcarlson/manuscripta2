@@ -1,3 +1,39 @@
-<div class="jumbotron">
-    <h1>App X</h1>
-</div>
+<header>
+    <nav class="navbar navbar-inverse my-navbar">
+        <div class="navbar-header">
+            <a href="/" class="navbar-brand">Manuscripta.io</a>
+        </div>
+    </nav>
+</header>
+
+<main>
+    <div class="row">
+        <div class="col-sm-4">
+
+            <div *ngIf="documents">
+                <ul class="list-group users-list">
+                    <li class="list-group-item"
+                        *ngFor="let document of documents"
+                        (click)="selectUser(document)"
+                        [class.active]="document === activeDocument">
+                        {{ document.title }}
+                    </li>
+                </ul>
+            </div>
+
+            <!-- <user-form (userCreated)="onUserCreated($event)"></user-form> -->
+
+        </div>
+        <div class="col-sm-8">
+            <!-- <div [innerHTML]="{{documents[0].renderedText}}"> -->
+
+           {{documents[0].text}}
+
+        </div>
+    </div>
+</main>
+
+
+<footer class="text-center my-footer">
+    Copyright &copy; 2016
+</footer>
