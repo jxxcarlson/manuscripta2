@@ -14,7 +14,7 @@
                 <ul class="list-group users-list">
                     <li class="list-group-item"
                         *ngFor="let document of documents"
-                        (click)="selectUser(document)"
+                        (click)="selectDocument(document)"
                         [class.active]="document === activeDocument">
                         {{ document.title }}
                     </li>
@@ -27,7 +27,7 @@
         <div class="col-sm-8">
             <!-- <div [innerHTML]="{{documents[0].renderedText}}"> -->
 
-           {{documents[0].text}}
+           {{activeDocument.text}}
 
         </div>
     </div>

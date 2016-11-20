@@ -24,4 +24,16 @@ export class AppComponent {
         }
 
     ];
+
+    activeDocument: Document;
+
+    activeDocument = this.documents[0]
+
+    selectDocument(doc) {
+
+        this.activeDocument = doc
+        console.log(this.activeDocument);
+    }
+
+
 }
