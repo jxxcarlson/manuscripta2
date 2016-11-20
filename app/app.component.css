@@ -1,11 +1,13 @@
 .jumbotron { box-shadow: 0 2px 0 rgba(0, 0, 0, 0.2); }
 
 .my-navbar { background-color: #666;}
+
 .my-footer {
     background-color: #666; height:40px;
     color: #fff; padding-top: 10px;
     padding-left: 10px; padding-right:10px;
 
-    position:absolute; bottom:0; width:55%;
+    position:absolute; bottom:0; width:65%;
 }
+
 .rendered-document {font-size: 2rem;}

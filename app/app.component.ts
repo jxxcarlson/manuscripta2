@@ -25,8 +25,6 @@ export class AppComponent {
 
     ];
 
-    activeDocument: Document;
-
     activeDocument = this.documents[0]
 
     selectDocument(doc) {
