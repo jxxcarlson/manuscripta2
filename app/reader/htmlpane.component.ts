@@ -2,9 +2,9 @@ import { Component, Input } from '@angular/core';
 import { Document } from '../models/document';
 
 @Component({
-    selector: 'text-pane',
-    template: `<div class="rendered-document">{{document.text}}</div>`
+    selector: 'html-pane',
+    template: '<div class="rendered-document" [innerHTML]=document.rendered_text></div>'
 })
-export class TextPane {
+export class HtmlPane {
     @Input() document:Document;
 }

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 import { Document } from './models/document'
 import { ApiService } from './services/api.service'
-import { TextPane } from './reader/textpane.component'
+// import { TextPane } from './reader/textpane.component'
 // import { MathJaxService } from './services/mathjax.service'
 
 

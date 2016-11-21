@@ -6,6 +6,8 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { TextPane } from './reader/textpane.component';
+import { HtmlPane } from './reader/htmlpane.component';
+
 // import { ApiService } from './services/api.service';
 
 
@@ -15,7 +17,7 @@ import { TextPane } from './reader/textpane.component';
         FormsModule, HttpModule
     ],
     declarations: [
-        AppComponent, TextPane
+        AppComponent, TextPane, HtmlPane
     ],
     bootstrap: [ AppComponent ]
 })
