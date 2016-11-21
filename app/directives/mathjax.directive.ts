@@ -13,3 +13,5 @@ export class MJD implements OnChanges {
         MathJax.Hub.Queue(["Typeset", MathJax.Hub, this.element.nativeElement]);
     }
 }
+
+// SOURCE: http://ruinshe.moe/2016/05/31/support-mathjax-in-angular2/

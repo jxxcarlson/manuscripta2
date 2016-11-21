@@ -40,7 +40,7 @@ export class AppComponent {
     ngOnInit() {
 
         this.loadDocument(177)
-        this.loadDocuments([76, 60, 78, 59])
+        this.loadDocuments([76, 60, 78, 59, 226])
     }
 
     loadDocument(id) {

@@ -29,7 +29,8 @@ export class ApiService {
     getDocument(id: string) : Observable<Document>{
         // ...using get request
         // return this.http.get('${this.apiUrl}/documents/${id}')
-        return this.http.get('http://localhost:2300/v1/documents/' + id)
+        // return this.http.get('http://localhost:2300/v1/documents/' + id)
+        return this.http.get('http://xdoc-api.herokuapp.com/v1/documents/' + id)
         // ...and calling .json() on the response to return data
             .map((res:Response) => new Document(res.json()['document']))
             //...errors if any
