@@ -1,11 +1,15 @@
 import { Component } from '@angular/core';
 
 import { Document } from './models/document'
+import { ApiService } from './services/api.service'
+import { Response } from '@angular/http'
+
 
 @Component({
     selector: 'my-app',
     templateUrl: './app/app.component.html',
-    styleUrls: ['./app/app.component.css']
+    styleUrls: ['./app/app.component.css'],
+    providers: [ ApiService ]
 })
 export class AppComponent {
 
@@ -14,18 +18,38 @@ export class AppComponent {
             id: '1', authorId: '11',
             title: 'Test',
             text: 'This is a *test*',
-            renderedText: 'This is a <b>test</b>'
+            rendered_text: 'This is a <b>test</b>'
         },
         {
             id: '2', authorId: '12',
             title: 'Christmas',
             text: 'Santa says _ho ho ho!_',
-            renderedText: 'Santa says <i>ho ho ho!</i>'
+            rendered_text: 'Santa says <i>ho ho ho!</i>'
         }
 
     ];
 
-    activeDocument = this.documents[0]
+    activeDocument = this.documents[0];
+
+
+    constructor(private apiService: ApiService) {}
+
+
+    ngOnInit() {
+
+        this.loadDocument()
+    }
+
+    loadDocument() {
+
+        this.apiService.getDocument('11')
+            .subscribe(
+
+                doc => this.documents.push(doc)
+
+            )
+    }
+
 
     selectDocument(doc) {
 

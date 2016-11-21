@@ -4,9 +4,15 @@ export class Document {
     public authorId: string;
     public title: string;
     public text: string;
-    public renderedText: string;
+    public rendered_text: string;
 
 
+    constructor(data = {}) {
+        Object.assign(this, data);
+    }
+
+
+    /*
     constructor (id, authorId, title, text, renderedText) {
 
         this.id = id;
@@ -15,7 +21,7 @@ export class Document {
         this.text = text;
         this.renderedText = renderedText;
     }
-
+*/
 
 
 }
