@@ -11,7 +11,11 @@
 }
 
 .rendered-document {
-    font-size: 2rem;
-    height:1200px;
+    font-size: 1.2rem;
     overflow: scroll;
+}
+
+.textcolumn {
+
+    height: 1000px;
 }

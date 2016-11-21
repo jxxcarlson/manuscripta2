@@ -14,6 +14,7 @@ const windowSize$ = new BehaviorSubject(getWindowSize());
 //  .subscribe(windowSize$);
 
 function getWindowSize() {
+
     return {
         height: window.innerHeight,
         width: window.innerWidth
@@ -29,14 +30,18 @@ function getWindowSize() {
 
 export class AppComponent {
 
-    size$ = windowSize$.do(o => console.log('size:', o));
+    // textPaneHeight = 500;
+    // twHeight = 700;
+
+    // size$ = windowSize$.do(o => console.log('size:', o));
+    // size$ = windowSize$.do(o => this.twHeight = o.height);
 
     documents: Document[] = [
         {
             id: '1', authorId: '11',
             title: 'Test',
             text: 'This is a *test*',
-            rendered_text: 'This is a <b>test</b>'
+            rendered_text: 'This is a <b>test</b> — as is the light blue color'
         },
         {
             id: '2', authorId: '12',
@@ -58,9 +63,6 @@ export class AppComponent {
         this.loadDocument(177)
         this.loadDocuments([76, 60, 78, 59, 226])
 
-        Observable.fromEvent(window, 'resize')
-            .map(getWindowSize)
-            .subscribe(windowSize$);
     }
 
     loadDocument(id) {

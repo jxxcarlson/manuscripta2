@@ -45,14 +45,11 @@ MathJax.Hub.Config({
                 </ul>
             </div>
 
-            <!-- <user-form (userCreated)="onUserCreated($event)"></user-form> -->
-
         </div>
 
         <!-- DOCUMENT CONTENT -->
-        <div class="col-sm-8">
-            <h2>Size: {{size$ | async | json}}</h2>
-             <html-pane [document]="activeDocument"></html-pane>
+        <div class="col-sm-8" [textPageHeight]="500">
+             <html-pane  [document]="activeDocument"></html-pane>
         </div>
 
     </div>

@@ -8,6 +8,8 @@ import { AppComponent } from './app.component';
 import { TextPane } from './reader/textpane.component';
 import { HtmlPane } from './reader/htmlpane.component';
 
+import { TextPageHeightDirective } from './directives/style.directive'
+
 // import { ApiService } from './services/api.service';
 
 
@@ -17,7 +19,7 @@ import { HtmlPane } from './reader/htmlpane.component';
         FormsModule, HttpModule
     ],
     declarations: [
-        AppComponent, TextPane, HtmlPane
+        AppComponent, TextPane, HtmlPane, TextPageHeightDirective
     ],
     bootstrap: [ AppComponent ]
 })

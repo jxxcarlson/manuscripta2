@@ -5,7 +5,7 @@ import { Document } from '../models/document';
     selector: 'text-pane',
     template: `<div class="rendered-document">{{document.text}}</div>`,
     styles: [`.rendered-document {
-    font-size: 2rem;
+    font-size: 1.75rem;
     height:1200px;
     overflow: scroll;
 }`]
