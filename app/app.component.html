@@ -51,6 +51,7 @@ MathJax.Hub.Config({
 
         <!-- DOCUMENT CONTENT -->
         <div class="col-sm-8">
+            <h2>Size: {{size$ | async | json}}</h2>
              <html-pane [document]="activeDocument"></html-pane>
         </div>
 

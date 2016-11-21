@@ -5,7 +5,20 @@ import { ApiService } from './services/api.service'
 // import { TextPane } from './reader/textpane.component'
 // import { MathJaxService } from './services/mathjax.service'
 
+import { Observable} from 'rxjs/Rx';
+import {BehaviorSubject} from "rxjs/Rx";
 
+const windowSize$ = new BehaviorSubject(getWindowSize());
+//Observable.fromEvent(window, 'resize')
+//  .map(getWindowSize)
+//  .subscribe(windowSize$);
+
+function getWindowSize() {
+    return {
+        height: window.innerHeight,
+        width: window.innerWidth
+    };
+}
 
 @Component({
     selector: 'my-app',
@@ -13,7 +26,10 @@ import { ApiService } from './services/api.service'
     styleUrls: ['./app/app.component.css'],
     providers: [ ApiService ]
 })
+
 export class AppComponent {
+
+    size$ = windowSize$.do(o => console.log('size:', o));
 
     documents: Document[] = [
         {
@@ -41,6 +57,10 @@ export class AppComponent {
 
         this.loadDocument(177)
         this.loadDocuments([76, 60, 78, 59, 226])
+
+        Observable.fromEvent(window, 'resize')
+            .map(getWindowSize)
+            .subscribe(windowSize$);
     }
 
     loadDocument(id) {
