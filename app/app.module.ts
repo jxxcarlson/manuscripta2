@@ -5,7 +5,7 @@ import { HttpModule } from '@angular/http';
 
 
 import { AppComponent } from './app.component';
-import { TextPane } from './textpane.component';
+import { TextPane } from './reader/textpane.component';
 // import { ApiService } from './services/api.service';
 
 
@@ -15,7 +15,7 @@ import { TextPane } from './textpane.component';
         FormsModule, HttpModule
     ],
     declarations: [
-        AppComponent
+        AppComponent, TextPane
     ],
     bootstrap: [ AppComponent ]
 })

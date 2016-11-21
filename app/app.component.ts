@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 import { Document } from './models/document'
 import { ApiService } from './services/api.service'
-import { TextPane } from './textpane.component'
+import { TextPane } from './reader/textpane.component'
 // import { MathJaxService } from './services/mathjax.service'
 
 
@@ -11,7 +11,7 @@ import { TextPane } from './textpane.component'
     selector: 'my-app',
     templateUrl: './app/app.component.html',
     styleUrls: ['./app/app.component.css'],
-    providers: [ ApiService, TextPane ]
+    providers: [ ApiService ]
 })
 export class AppComponent {
 
