@@ -2,24 +2,6 @@ import { Component } from '@angular/core';
 
 import { Document } from './models/document'
 import { ApiService } from './services/api.service'
-// import { TextPane } from './reader/textpane.component'
-// import { MathJaxService } from './services/mathjax.service'
-
-import { Observable} from 'rxjs/Rx';
-import {BehaviorSubject} from "rxjs/Rx";
-
-const windowSize$ = new BehaviorSubject(getWindowSize());
-//Observable.fromEvent(window, 'resize')
-//  .map(getWindowSize)
-//  .subscribe(windowSize$);
-
-function getWindowSize() {
-
-    return {
-        height: window.innerHeight,
-        width: window.innerWidth
-    };
-}
 
 @Component({
     selector: 'my-app',
@@ -29,13 +11,7 @@ function getWindowSize() {
 })
 
 export class AppComponent {
-
-    // textPaneHeight = 500;
-    // twHeight = 700;
-
-    // size$ = windowSize$.do(o => console.log('size:', o));
-    // size$ = windowSize$.do(o => this.twHeight = o.height);
-
+    
     documents: Document[] = [
         {
             id: '1', authorId: '11',
