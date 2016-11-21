@@ -28,5 +28,13 @@ framework.
 I can be reached at jxxcarlson@gmail.com
 
 
+INSTALLATION:
 
+Prerequesites: `node`, `npm`
+
+To test, run `npm install`, then `npm start`.  
+
+I have had to run `npm install rxjs@5.0.0-beta.12`, before and/or after `npm install`, even though that file is in my `package.json`.  This is no doubt due the fact that Angular2 is still in Beta.  
+
+I updated two entries in `package.json`, but there may be others that are out of date.  Please let me know if that is the case.
 
