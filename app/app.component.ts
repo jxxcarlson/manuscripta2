@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 
 import { Document } from './models/document'
 import { ApiService } from './services/api.service'
-import { Response } from '@angular/http'
+// import { MathJaxService } from './services/mathjax.service'
+
 
 
 @Component({
@@ -37,17 +38,24 @@ export class AppComponent {
 
     ngOnInit() {
 
-        this.loadDocument()
+        this.loadDocument(177)
+        this.loadDocuments([76, 60, 78, 59])
     }
 
-    loadDocument() {
+    loadDocument(id) {
 
-        this.apiService.getDocument('11')
+        this.apiService.getDocument(id)
             .subscribe(
 
                 doc => this.documents.push(doc)
 
             )
+    }
+
+    loadDocuments(idList) {
+
+        // idList.forEach( function(id) { this.loadDocument(id) } )
+        idList.forEach( (id) => this.loadDocument(id) )
     }
 
 

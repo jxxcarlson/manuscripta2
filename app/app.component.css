@@ -10,4 +10,8 @@
     position:absolute; bottom:0; width:65%;
 }
 
-.rendered-document {font-size: 2rem;}
+.rendered-document {
+    font-size: 2rem;
+    height:1200px;
+    overflow: scroll;
+}
