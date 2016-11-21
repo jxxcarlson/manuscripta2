@@ -5,6 +5,7 @@ import { HttpModule } from '@angular/http';
 
 
 import { AppComponent } from './app.component';
+import { TextPane } from './textpane.component';
 // import { ApiService } from './services/api.service';
 
 

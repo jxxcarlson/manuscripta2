@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 
 import { Document } from './models/document'
 import { ApiService } from './services/api.service'
+import { TextPane } from './textpane.component'
 // import { MathJaxService } from './services/mathjax.service'
 
 
@@ -10,7 +11,7 @@ import { ApiService } from './services/api.service'
     selector: 'my-app',
     templateUrl: './app/app.component.html',
     styleUrls: ['./app/app.component.css'],
-    providers: [ ApiService ]
+    providers: [ ApiService, TextPane ]
 })
 export class AppComponent {
 
@@ -30,7 +31,7 @@ export class AppComponent {
 
     ];
 
-    activeDocument = this.documents[0];
+    activeDocument:Document = this.documents[0];
 
 
     constructor(private apiService: ApiService) {}
@@ -67,6 +68,5 @@ export class AppComponent {
 
 
 }
-
 
 // https://vsavkin.com/angular-2-template-syntax-5f2ee9f13c6a#.by0izmvbj
