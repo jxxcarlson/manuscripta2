@@ -3,6 +3,7 @@ import {Directive, ElementRef, Input} from 'angular2/core';
 
 declare var MathJax: any;
 
+// import { MathJax } from '../../node_modules/mathjax/MathJax.js'
 
 @Directive({
     selector: '[MathJax]'
@@ -16,7 +17,7 @@ export class MathJaxDirective {
 
     ngOnChanges() {
         this.el.nativeElement.innerHTML = this.texExpression;
-        MathJax.Hub.Queue(["Typeset", MathJax.Hub, this.el.nativeElement]);
+        //..  MathJax.Hub.Queue(["Typeset", MathJax.Hub, this.el.nativeElement]);
     }
 }
 

@@ -6,6 +6,8 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 
+import { MathJaxDirective } from './directives/mathjax.directive';
+
 import { TextPane } from './reader/textpane.component';
 import { HtmlPane } from './reader/htmlpane.component';
 import { MathJaxPane } from './reader/mathjaxpane.component';
@@ -21,7 +23,9 @@ import { TextPageHeightDirective } from './directives/style.directive'
         FormsModule, HttpModule
     ],
     declarations: [
-        AppComponent, TextPane, HtmlPane, MathJaxPane, TextPageHeightDirective
+        AppComponent,
+        // MathJaxDirective,
+        TextPane, HtmlPane, MathJaxPane, TextPageHeightDirective
     ],
     bootstrap: [ AppComponent ]
 })
