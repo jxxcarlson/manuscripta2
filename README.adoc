@@ -3,7 +3,6 @@
 This is a start on an Angular2 version of the client
 app for http://www.manuscripta.io. The REST api
 server is at http://xdoc-api.herokuapp.com/v1/test
-
 At the moment it displays the HTML content
 of two test document files. then appends a list of
 documents from the REST API.  
