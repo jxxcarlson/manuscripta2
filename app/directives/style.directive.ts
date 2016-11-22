@@ -10,8 +10,6 @@ export class TextPageHeightDirective {
     constructor(public el: ElementRef, public renderer: Renderer) {
 
         this.height = window.innerHeight.toString()
-        console.log('AA HEIGHT = ' + this.height)
-        console.log('AA DEFAULT HEIGHT = ' + this._defaultHeight)
         renderer.setElementStyle(el.nativeElement, 'backgroundColor', 'lightblue');
         renderer.setElementStyle(el.nativeElement, 'height', (window.innerHeight - 200).toString() + 'px' || this._defaultHeight );
 

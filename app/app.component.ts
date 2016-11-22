@@ -11,7 +11,7 @@ import { ApiService } from './services/api.service'
 })
 
 export class AppComponent {
-    
+
     documents: Document[] = [
         {
             id: '1', authorId: '11',
