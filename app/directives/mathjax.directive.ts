@@ -1,17 +1,23 @@
-import {Directive, ElementRef, OnChanges, Input} from "@angular/core";
-declare var MathJax: {
-    Hub: {
-        Queue: (param: Object[]) => void;
+
+import {Directive, ElementRef, Input} from 'angular2/core';
+@Directive({
+    selector: '[MathJax]'
+})
+export class MathJaxDirective {
+    @Input(' MathJax')
+    texExpression:string;
+
+    constructor(private el: ElementRef) {
     }
-}
-@Directive({selector: '[mathJax]'})
-export class MJD implements OnChanges {
-    @Input("mathJax") private value: string = "";
-    constructor(private element: ElementRef) {}
+
     ngOnChanges() {
-        this.element.nativeElement.innerHTML = this.value;
-        MathJax.Hub.Queue(["Typeset", MathJax.Hub, this.element.nativeElement]);
+        this.el.nativeElement.innerHTML = this.texExpression;
+        // MathJax.Hub.Queue(["Typeset", MathJax.Hub, this.el.nativeElement]);
     }
 }
 
-// SOURCE: http://ruinshe.moe/2016/05/31/support-mathjax-in-angular2/
+
+
+// SOURCE: http://stackoverflow.com/questions/36370826/how-to-get-mathjax-working-with-angular2
+
+// ANOTTHER SOURCE: http://ruinshe.moe/2016/05/31/support-mathjax-in-angular2/
