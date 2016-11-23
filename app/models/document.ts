@@ -30,7 +30,7 @@ export class DocumentList {
 
     public status: string;
     public documentCount: number;
-    public documentArray: DocumentHash[];
+    public documents: DocumentHash[];
 
     constructor(data = {}) {
         Object.assign(this, data);
