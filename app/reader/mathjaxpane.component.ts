@@ -1,6 +1,5 @@
 import { Component, Input } from '@angular/core';
 import { Document } from '../models/document';
-import { MathJaxDirective } from  '../directives/mathjax.directive'
 
 @Component({
     selector: 'mathjax-pane',
