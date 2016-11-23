@@ -30,6 +30,13 @@ export class AppComponent {
 
     activeDocument:Document = this.documents[0];
 
+    // http://tutorials.pluralsight.com/front-end-javascript/getting-started-with-angular-2-by-building-a-giphy-search-application
+    performSearch(searchTerm: HTMLInputElement): void {
+
+        console.log(`User entered: ${searchTerm.value}`);
+
+    }
+
 
     constructor(private apiService: ApiService) {}
 
