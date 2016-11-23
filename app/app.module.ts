@@ -24,7 +24,7 @@ import { TextPageHeightDirective } from './directives/style.directive'
     ],
     declarations: [
         AppComponent,
-        // MathJaxDirective,
+        MathJaxDirective,
         TextPane, HtmlPane, MathJaxPane, TextPageHeightDirective
     ],
     bootstrap: [ AppComponent ]
