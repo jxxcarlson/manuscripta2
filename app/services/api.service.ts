@@ -13,7 +13,7 @@ import { Observable} from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
-import { Document } from '../models/document'
+import { Document, DocumentHash, DocumentList } from '../models/document'
 
 
 @Injectable()
@@ -34,6 +34,13 @@ export class ApiService {
         // ...and calling .json() on the response to return data
             .map((res:Response) => new Document(res.json()['document']))
             //...errors if any
+            .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
+
+    }
+
+    findDocuments(queryString: string) : Observable<DocumentList>{
+        return this.http.get('http://xdoc-api.herokuapp.com/v1/documents?' + queryString)
+            .map((res:Response) => new DocumentList(res.json()['documents']))
             .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
 
     }

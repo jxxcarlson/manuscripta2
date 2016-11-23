@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { Document } from './models/document'
+import { Document, DocumentList } from './models/document'
 import { ApiService } from './services/api.service'
 
 @Component({
@@ -28,6 +28,8 @@ export class AppComponent {
 
     ];
 
+    documenArray:Document[] = []
+
     activeDocument:Document = this.documents[0];
 
     // http://tutorials.pluralsight.com/front-end-javascript/getting-started-with-angular-2-by-building-a-giphy-search-application
@@ -35,6 +37,20 @@ export class AppComponent {
 
         console.log(`User entered: ${searchTerm.value}`);
 
+        this.apiService.findDocuments(searchTerm.value)
+            .subscribe(
+
+                docList => console.log(docList)
+                // docList => this.loadDocumentsFromDocumentList(docList)
+
+            )
+
+    }
+
+    loadDocumentsFromDocumentList(docList: DocumentList): void {
+
+        // var idList = docList.map( hash => hash.id )
+        console.log('docList: ' + docList)
     }
 
 

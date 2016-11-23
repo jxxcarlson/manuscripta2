@@ -25,3 +25,26 @@ export class Document {
 
 
 }
+
+export class DocumentList {
+
+    public status: string;
+    public documentCount: number;
+    public documentArray: DocumentHash[];
+
+    constructor(data = {}) {
+        Object.assign(this, data);
+    }
+
+}
+
+export class DocumentHash {
+
+    public id: string;
+    public identifier; string;
+    public title: string;
+
+    constructor(data = {}) {
+        Object.assign(this, data);
+    }
+}
