@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { Document, DocumentList } from './models/document'
+import { Document, DocumentHash , } from './models/document'
 import { ApiService } from './services/api.service'
 
 @Component({
@@ -11,6 +11,8 @@ import { ApiService } from './services/api.service'
 })
 
 export class AppComponent {
+
+
 
     documents: Document[] = [
         {
@@ -40,17 +42,15 @@ export class AppComponent {
         this.apiService.findDocuments(searchTerm.value)
             .subscribe(
 
-                docList => console.log(docList)
-                // docList => this.loadDocumentsFromDocumentList(docList)
-
+                docList => [ console.log(docList),  this.loadDocumentsFromDocumentList(docList.documents)]
             )
 
     }
 
-    loadDocumentsFromDocumentList(docList: DocumentList): void {
+    loadDocumentsFromDocumentList(docs: DocumentHash[]): void {
 
-        // var idList = docList.map( hash => hash.id )
-        console.log('docList: ' + docList)
+        this.documents = []
+        docs.forEach( docHash => [this.loadDocument(docHash.id), console.log(docHash.title)] )
     }
 
 
@@ -60,7 +60,7 @@ export class AppComponent {
     ngOnInit() {
 
         this.loadDocument(177)
-        this.loadDocuments([76, 60, 78, 59, 226])
+        // this.loadDocuments([76, 60, 78, 59, 226])
 
     }
 
@@ -83,7 +83,23 @@ export class AppComponent {
 
     selectDocument(doc) {
 
-        this.activeDocument = doc
+
+        if (doc.rendered_text === undefined) {
+
+            this.apiService.getDocument(doc.id)
+                .subscribe(
+
+                    fetchedDoc => doc.rendered_text = fetchedDoc.rendered_text,
+                    this.activeDocument = doc
+
+                )
+
+
+        } else {
+
+            this.activeDocument = doc
+
+        }
         console.log(this.activeDocument);
     }
 
