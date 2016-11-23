@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 
 import { Document, DocumentHash , } from './models/document'
 import { ApiService } from './services/api.service'
+import { QueryParser } from './services/queryparser.service'
 
 @Component({
     selector: 'my-app',
@@ -37,9 +38,16 @@ export class AppComponent {
     // http://tutorials.pluralsight.com/front-end-javascript/getting-started-with-angular-2-by-building-a-giphy-search-application
     performSearch(searchTerm: HTMLInputElement): void {
 
+        var qp: QueryParser = new QueryParser();
+
         console.log(`User entered: ${searchTerm.value}`);
 
-        this.apiService.findDocuments(searchTerm.value)
+
+        var apiQuery: string = qp.parse(searchTerm.value)
+
+        console.log(`apiQuery: ${apiQuery}`);
+
+        this.apiService.findDocuments(apiQuery)
             .subscribe(
 
                 docList => [ console.log(docList),  this.loadDocumentsFromDocumentList(docList.documents)]
