@@ -155,8 +155,10 @@ export class AppComponent {
     }
 
 
-    selectDocument(doc) {
+    selectDocument(doc:Document) {
 
+        var documentParentId = -3
+        var systemParentId
 
         if (doc.rendered_text === undefined) {
 
@@ -164,9 +166,7 @@ export class AppComponent {
                 .subscribe(
 
                     fetchedDoc => [doc.rendered_text = fetchedDoc.rendered_text,
-                    this.activeDocument = doc,
-                    this.loadParentDocument()]
-
+                    this.activeDocument = doc ]
                 )
 
 
@@ -174,8 +174,19 @@ export class AppComponent {
 
             this.activeDocument = doc
             this.loadParentDocument()
+            doc.has_subdocuments ? this.loadSubdocuments(): ''
+            //documentParentId = parseInt(doc.getParentId())
 
         }
+
+
+
+
+        // this.parentDocument == undefined ? systemParentId = 0 : systemParentId = this.parentDocument.links.parent.id
+        // systemParentId == docParentId ? this.tocMode = tocModeType.documentContents : this.tocMode = tocModeType.searchResults
+
+
+        // console.log('docId = ' + this.activeDocument.id, + ', docParentId = ' + documentParentId + ', systemParentId = ' + systemParentId)
         console.log(this.activeDocument);
     }
 
@@ -183,3 +194,5 @@ export class AppComponent {
 }
 
 // https://vsavkin.com/angular-2-template-syntax-5f2ee9f13c6a#.by0izmvbj
+
+

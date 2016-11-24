@@ -5,9 +5,10 @@ export class Document {
     public title: string;
     public text: string;
     public rendered_text: string;
+    public has_subdocuments: boolean;
     public links: {
         documents: DocumentHash []
-        parent: {}
+        parent: {id: string, title: string}
     };
 
 
@@ -17,17 +18,13 @@ export class Document {
     }
 
 
-    /*
-    constructor (id, authorId, title, text, renderedText) {
+    getParentId():string {
 
-        this.id = id;
-        this.authorId = authorId;
-        this.title = title;
-        this.text = text;
-        this.renderedText = renderedText;
+        if (this.links.parent == undefined) { return '-2' }
+        if (this.links.parent.id == undefined) { return '-1' }
+        return this.links.parent.id
+
     }
-*/
-
 
 }
 
