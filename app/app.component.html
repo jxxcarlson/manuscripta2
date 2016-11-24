@@ -41,11 +41,11 @@ MathJax.Hub.Config({
                  <!-- <button style="position:absolute; right:25px; width:15%" (click)="performSearch(searchTerm)" >Search</button> -->
              </div>
 
-            <div style="width:100%; margin-bottom:10px; height:30px; background-color: lightblue">
-                <button style="title: 'Show search results'; background-color: cadetblue; color: white;
-                  position:absolute; left:15px; width:45%" (click)="recallSearchResults()">Search Results</button>
-                <button style="background-color: #444; color: white;
-                  position:absolute; right:15px; width:45%" (click)="loadSubdocuments()">Doc Contents</button>
+            <div style="width:100%; margin-bottom:10px; height:30px;">
+                <button class="show-search-results-button" (click)="recallSearchResults()">Search Results</button>
+                <button class="show-contents-button"
+                        [hidden]="!activeDocument.has_subdocuments"
+                        (click)="loadSubdocuments()">Doc Contents</button>
 
             </div>
 

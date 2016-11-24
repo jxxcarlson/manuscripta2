@@ -4,6 +4,8 @@ import { Document, DocumentHash , } from './models/document'
 import { ApiService } from './services/api.service'
 import { QueryParser } from './services/queryparser.service'
 
+enum tocModeType {searchResults, documentContents};
+
 @Component({
     selector: 'my-app',
     templateUrl: './app/app.component.html',
@@ -14,28 +16,30 @@ import { QueryParser } from './services/queryparser.service'
 export class AppComponent {
 
 
-    searchResults: Document[] = []
-    documentContents: Document[] = []
-
     documents: Document[] = [
         {
             id: '1', authorId: '11',
             title: 'Test',
             text: 'This is a *test*',
-            rendered_text: 'This is a <b>test</b> — as is the light blue color'
+            rendered_text: 'This is a <b>test</b> — as is the light blue color',
+            links: { documents: []}
         },
         {
             id: '2', authorId: '12',
             title: 'Christmas',
             text: 'Santa says _ho ho ho!_',
-            rendered_text: 'Santa says <i>ho ho ho!</i>'
+            rendered_text: 'Santa says <i>ho ho ho!</i>',
+            links: { documents: []}
         }
 
     ];
 
-    documenArray:Document[] = []
+    // APPLICATION STATE
+    searchResults: Document[] = this.documents
+    documentContents: Document[] = []
+    activeDocument:Document = this.documents[0];  // XX:DANGER
+    tocMode: tocModeType = tocModeType.searchResults
 
-    activeDocument:Document = this.documents[0];
 
     // http://tutorials.pluralsight.com/front-end-javascript/getting-started-with-angular-2-by-building-a-giphy-search-application
     performSearch(searchTerm: HTMLInputElement): void {
@@ -49,6 +53,8 @@ export class AppComponent {
 
         console.log(`apiQuery: ${apiQuery}`);
 
+        this.tocMode = tocModeType.searchResults
+
         this.apiService.findDocuments(apiQuery)
             .subscribe(
 
@@ -61,6 +67,7 @@ export class AppComponent {
 
         this.documentContents = this.documents
         this.documents = []
+        this.tocMode = tocModeType.documentContents
         docs.forEach( docHash => [this.loadDocument(docHash.id), console.log(docHash.title)] )
     }
 

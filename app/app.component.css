@@ -22,3 +22,21 @@
 
     height: 1000px;
 }
+
+.show-search-results-button {
+
+    title: 'Show search results';
+    background-color: #444;
+    color: white;
+    position:absolute;
+    left:15px; width:45%
+}
+
+.show-contents-button {
+
+    title: 'Show search results';
+    background-color: #444;
+    color: white;
+    position:absolute;
+    right:15px; width:45%
+}
