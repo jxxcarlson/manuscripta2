@@ -46,9 +46,9 @@ MathJax.Hub.Config({
                         [style.background-color]=searchResultsColor()
                         (click)="recallSearchResults()">Search Results</button>
                 <button class="show-contents-button"
-                        [hidden]="!activeDocument.has_subdocuments"
+                        [hidden]="!displayContents()"
                         [style.background-color]=contentsColor()
-                        (click)="loadSubdocuments()">Doc Contents</button>
+                        (click)="recallDocumentContents()">Doc Contents</button>
 
             </div>
 
@@ -84,7 +84,7 @@ MathJax.Hub.Config({
 
 <!-- <footer class="navbar navbar-fixed-bottom my-footer"> -->
 <footer class="my-footer">
-    id: {{ activeDocument.identifier || activeDocument.id }}
+    id: {{ activeDocument.identifier || activeDocument.id }} * mode: {{tocMode}}
 </footer>
 
 

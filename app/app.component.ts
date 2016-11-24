@@ -42,6 +42,7 @@ export class AppComponent {
     activeDocument:Document = this.documents[0];  // XX:DANGER
     parentDocument:Document
     tocMode: tocModeType = tocModeType.searchResults
+    contentsVisible: boolean = false
 
 
     // SEARCH
@@ -56,6 +57,11 @@ export class AppComponent {
         return this.tocMode === tocModeType.documentContents ? 'darkRed' : '#444'
     }
 
+    displayContents() {
+
+        return this.contentsVisible
+    }
+
 
     // http://tutorials.pluralsight.com/front-end-javascript/getting-started-with-angular-2-by-building-a-giphy-search-application
     performSearch(searchTerm: HTMLInputElement): void {
@@ -65,6 +71,7 @@ export class AppComponent {
         var apiQuery: string = qp.parse(searchTerm.value)
 
         this.tocMode = tocModeType.searchResults
+        this.contentsVisible = false
 
         this.apiService.findDocuments(apiQuery)
             .subscribe(
@@ -85,12 +92,23 @@ export class AppComponent {
     recallSearchResults(): void {
 
         this.tocMode = tocModeType.searchResults
+        this.documentContents = this.documents
         this.documents = this.searchResults
+    }
+
+    recallDocumentContents(): void {
+
+        this.tocMode = tocModeType.documentContents
+        this.searchResults = this.documents
+        this.documents = this.documentContents
+        if (this.documentContents == []) { this.loadSubdocuments() }
+
     }
 
     loadSubdocuments(): void {
 
         this.tocMode = tocModeType.documentContents
+        this.contentsVisible = true
         this.searchResults = this.documents
         this.documents = []
         var doc = this.activeDocument
@@ -147,6 +165,7 @@ export class AppComponent {
     makeParentDocumentActive(): void {
 
         this.activeDocument = this.parentDocument
+        this.loadSubdocuments()
     }
 
     loadDocuments(idList) {
@@ -175,6 +194,21 @@ export class AppComponent {
             this.activeDocument = doc
             this.loadParentDocument()
             doc.has_subdocuments ? this.loadSubdocuments(): ''
+            if (this.parentDocument != undefined && doc.links.parent.title == this.parentDocument.title) {
+
+                console.log('(1*) doc parent: ' + doc.links.parent.title)
+                this.tocMode = tocModeType.documentContents
+
+            } else {
+
+                console.log('Did not set this.tocMode = tocModeType.documentContents')
+                console.log('(2) doc parent: ' + doc.links.parent.title)
+                if (this.parentDocument != undefined) {
+
+                    console.log('(2) system parent: ' + this.parentDocument.links.parent.id)
+                }
+
+            }
             //documentParentId = parseInt(doc.getParentId())
 
         }
