@@ -37,9 +37,17 @@ MathJax.Hub.Config({
 
             <!-- SEARCH BAR -->
             <div style="width:100%; margin-bottom:10px;">
-                 <input (keyup.enter)="performSearch(searchTerm)" style="width:80%" name="search" #searchTerm>
-                 <button style="position:absolute; right:15px; width:15%" (click)="performSearch(searchTerm)" >Search</button>
+                 <input (keyup.enter)="performSearch(searchTerm)" style="width:100%" name="search" #searchTerm>
+                 <!-- <button style="position:absolute; right:25px; width:15%" (click)="performSearch(searchTerm)" >Search</button> -->
              </div>
+
+            <div style="width:100%; margin-bottom:10px; height:30px; background-color: lightblue">
+                <button style="title: 'Show search results'; background-color: cadetblue; color: white;
+                  position:absolute; left:15px; width:45%" (click)="recallSearchResults()">Search Results</button>
+                <button style="background-color: #444; color: white;
+                  position:absolute; right:15px; width:45%" (click)="loadSubdocuments()">Doc Contents</button>
+
+            </div>
 
 
 

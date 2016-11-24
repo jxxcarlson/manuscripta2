@@ -14,6 +14,8 @@ import { QueryParser } from './services/queryparser.service'
 export class AppComponent {
 
 
+    searchResults: Document[] = []
+    documentContents: Document[] = []
 
     documents: Document[] = [
         {
@@ -57,7 +59,22 @@ export class AppComponent {
 
     loadDocumentsFromDocumentList(docs: DocumentHash[]): void {
 
+        this.documentContents = this.documents
         this.documents = []
+        docs.forEach( docHash => [this.loadDocument(docHash.id), console.log(docHash.title)] )
+    }
+
+    recallSearchResults(): void {
+
+        this.documents = this.searchResults
+    }
+
+    loadSubdocuments(): void {
+
+        this.searchResults = this.documents
+        this.documents = []
+        var doc = this.activeDocument
+        var docs = doc.links.documents || []
         docs.forEach( docHash => [this.loadDocument(docHash.id), console.log(docHash.title)] )
     }
 

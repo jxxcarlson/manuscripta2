@@ -5,6 +5,10 @@ export class Document {
     public title: string;
     public text: string;
     public rendered_text: string;
+    public links: {
+        documents: DocumentHash[]
+    };
+
 
 
     constructor(data = {}) {
