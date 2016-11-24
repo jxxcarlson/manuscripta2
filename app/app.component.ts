@@ -40,7 +40,21 @@ export class AppComponent {
     searchResults: Document[] = this.documents
     documentContents: Document[] = []
     activeDocument:Document = this.documents[0];  // XX:DANGER
+    parentDocument:Document
     tocMode: tocModeType = tocModeType.searchResults
+
+
+    // SEARCH
+
+    searchResultsColor() {
+
+        return this.tocMode === tocModeType.searchResults ? 'darkRed' : '#444'
+    }
+
+    contentsColor() {
+
+        return this.tocMode === tocModeType.documentContents ? 'darkRed' : '#444'
+    }
 
 
     // http://tutorials.pluralsight.com/front-end-javascript/getting-started-with-angular-2-by-building-a-giphy-search-application
@@ -48,12 +62,7 @@ export class AppComponent {
 
         var qp: QueryParser = new QueryParser();
 
-        console.log(`User entered: ${searchTerm.value}`);
-
-
         var apiQuery: string = qp.parse(searchTerm.value)
-
-        console.log(`apiQuery: ${apiQuery}`);
 
         this.tocMode = tocModeType.searchResults
 
@@ -69,17 +78,19 @@ export class AppComponent {
 
         this.documentContents = this.documents
         this.documents = []
-        this.tocMode = tocModeType.documentContents
         docs.forEach( docHash => [this.loadDocument(docHash.id), console.log(docHash.title)] )
+        // this.activeDocument = this.documents[0]
     }
 
     recallSearchResults(): void {
 
+        this.tocMode = tocModeType.searchResults
         this.documents = this.searchResults
     }
 
     loadSubdocuments(): void {
 
+        this.tocMode = tocModeType.documentContents
         this.searchResults = this.documents
         this.documents = []
         var doc = this.activeDocument
@@ -108,9 +119,38 @@ export class AppComponent {
             )
     }
 
+
+    assignParent(id) {
+
+        this.apiService.getDocument(id)
+            .subscribe(
+
+                doc => this.parentDocument = doc
+
+            )
+    }
+
+    loadParentDocument() {
+
+        console.log('loadParentDocument')
+
+        var bailOut = this.activeDocument.links.parent == undefined
+        if (bailOut) { return }
+        bailOut = this.activeDocument.links.parent.id == undefined
+        if (bailOut) { return }
+
+        var parentId = this.activeDocument.links.parent.id
+        this.assignParent(parentId)
+
+    }
+
+    makeParentDocumentActive(): void {
+
+        this.activeDocument = this.parentDocument
+    }
+
     loadDocuments(idList) {
 
-        // idList.forEach( function(id) { this.loadDocument(id) } )
         idList.forEach( (id) => this.loadDocument(id) )
     }
 
@@ -123,8 +163,9 @@ export class AppComponent {
             this.apiService.getDocument(doc.id)
                 .subscribe(
 
-                    fetchedDoc => doc.rendered_text = fetchedDoc.rendered_text,
-                    this.activeDocument = doc
+                    fetchedDoc => [doc.rendered_text = fetchedDoc.rendered_text,
+                    this.activeDocument = doc,
+                    this.loadParentDocument()]
 
                 )
 
@@ -132,6 +173,7 @@ export class AppComponent {
         } else {
 
             this.activeDocument = doc
+            this.loadParentDocument()
 
         }
         console.log(this.activeDocument);

@@ -42,9 +42,12 @@ MathJax.Hub.Config({
              </div>
 
             <div style="width:100%; margin-bottom:10px; height:30px;">
-                <button class="show-search-results-button" (click)="recallSearchResults()">Search Results</button>
+                <button class="show-search-results-button"
+                        [style.background-color]=searchResultsColor()
+                        (click)="recallSearchResults()">Search Results</button>
                 <button class="show-contents-button"
                         [hidden]="!activeDocument.has_subdocuments"
+                        [style.background-color]=contentsColor()
                         (click)="loadSubdocuments()">Doc Contents</button>
 
             </div>
@@ -68,7 +71,7 @@ MathJax.Hub.Config({
         <!-- MAIN COLUMN: DOCUMENT CONTENT -->
 
         <div class="col-sm-8" [textPageHeight]>
-             <h4 style="font-size:2rem">{{activeDocument.links.parent.title}}</h4>
+             <h4 style="font-size:2rem" (click)="makeParentDocumentActive()">{{activeDocument.links.parent.title}}</h4>
              <h4 style="font-size:3rem">{{activeDocument.title}}</h4>
              <html-pane  [document]="activeDocument"></html-pane>
         </div>
