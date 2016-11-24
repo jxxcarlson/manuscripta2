@@ -7,6 +7,7 @@ export class Document {
     public rendered_text: string;
     public links: {
         documents: DocumentHash []
+        parent: {}
     };
 
 

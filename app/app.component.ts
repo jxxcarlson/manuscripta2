@@ -22,14 +22,16 @@ export class AppComponent {
             title: 'Test',
             text: 'This is a *test*',
             rendered_text: 'This is a <b>test</b> — as is the light blue color',
-            links: { documents: []}
+            links: {
+                documents: [], parent: {title: 'foo', id: 22}
+            }
         },
         {
             id: '2', authorId: '12',
             title: 'Christmas',
             text: 'Santa says _ho ho ho!_',
             rendered_text: 'Santa says <i>ho ho ho!</i>',
-            links: { documents: []}
+            links: { documents: [], parent: {} }
         }
 
     ];
