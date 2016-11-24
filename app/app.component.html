@@ -37,7 +37,7 @@ MathJax.Hub.Config({
 
             <!-- SEARCH BAR -->
             <div style="width:100%; margin-bottom:10px;">
-                 <input (keyup.enter)="performSearch(searchTerm)" style="width:100%" name="search" #searchTerm>
+                 <input (keyup.enter)="performSearch(searchTerm)" style="background-color: palegoldenrod; width:100%; heigh:45px;" name="search" #searchTerm>
                  <!-- <button style="position:absolute; right:25px; width:15%" (click)="performSearch(searchTerm)" >Search</button> -->
              </div>
 
@@ -52,7 +52,7 @@ MathJax.Hub.Config({
 
 
              <!-- DOCUMENT LIST -->
-            <div *ngIf="documents">
+            <div *ngIf="documents" [textPageHeight] style="overflow: scroll">
                 <ul class="list-group users-list">
                     <li class="list-group-item"
                         *ngFor="let document of documents"
@@ -66,7 +66,9 @@ MathJax.Hub.Config({
         </div>
 
         <!-- MAIN COLUMN: DOCUMENT CONTENT -->
-        <div class="col-sm-8" [textPageHeight]="500">
+
+        <div class="col-sm-8" [textPageHeight]>
+             <h4 style="font-size:3rem">{{activeDocument.title}}</h4>
              <html-pane  [document]="activeDocument"></html-pane>
         </div>
 

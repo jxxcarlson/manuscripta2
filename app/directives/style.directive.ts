@@ -11,7 +11,7 @@ export class TextPageHeightDirective {
 
         this.height = window.innerHeight.toString()
         // renderer.setElementStyle(el.nativeElement, 'backgroundColor', 'lightblue');
-        renderer.setElementStyle(el.nativeElement, 'height', (window.innerHeight - 180).toString() + 'px' || this._defaultHeight );
+        renderer.setElementStyle(el.nativeElement, 'height', (window.innerHeight - 220).toString() + 'px' || this._defaultHeight );
 
     }
 
