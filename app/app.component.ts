@@ -15,26 +15,24 @@ enum tocModeType {searchResults, documentContents};
 
 export class AppComponent {
 
+    docHash1 =  new DocumentHash ({
+        id: '1', author_id: '11',
+        title: 'Test',
+        text: 'This is a *test*',
+        rendered_text: 'This is a <b>test</b> — as is the light blue color',
+        links: { documents: [], parent: {title: 'foo', id: 22} }
+    })
 
-    documents: Document[] = [
-        {
-            id: '1', authorId: '11',
-            title: 'Test',
-            text: 'This is a *test*',
-            rendered_text: 'This is a <b>test</b> — as is the light blue color',
-            links: {
-                documents: [], parent: {title: 'foo', id: 22}
-            }
-        },
-        {
-            id: '2', authorId: '12',
-            title: 'Christmas',
-            text: 'Santa says _ho ho ho!_',
-            rendered_text: 'Santa says <i>ho ho ho!</i>',
-            links: { documents: [], parent: {} }
-        }
+    docHash2 =  new DocumentHash({
+        id: '2', author_id: '12',
+        title: 'Christmas',
+        text: 'Santa says _ho ho ho!_',
+        rendered_text: 'Santa says <i>ho ho ho!</i>',
+        links: { documents: [], parent: {} }
+    })
 
-    ];
+
+    documents: Document[] = [new Document(this.docHash1), new Document(this.docHash2) ];
 
     // APPLICATION STATE
     searchResults: Document[] = this.documents
