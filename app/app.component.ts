@@ -18,23 +18,14 @@ export class AppComponent {
     // Initial data
     docHash1 =  new DocumentHash ({
         id: '1', author_id: '11',
-        title: 'Test',
-        text: 'This is a *test*',
-        rendered_text: 'This is a <b>test</b> — as is the light blue color',
-        links: { documents: [], parent: {title: 'foo', id: 22} }
+        title: 'Welcome',
+        text: 'Welcome to Manuscripta.  Use search box to find documents',
+        rendered_text: 'Welcome to Manuscripta.  Use search box to find documents',
+        links: { documents: [], parent: { } }
+        // links: { documents: [], parent: {title: 'foo', id: 22} }
     })
 
-    docHash2 =  new DocumentHash({
-        id: '2', author_id: '12',
-        title: 'Christmas',
-        text: 'Santa says _ho ho ho!_',
-        rendered_text: 'Santa says <i>ho ho ho!</i>',
-        links: { documents: [], parent: {} }
-    })
-
-
-    // documents: Document[] = [new Document(this.docHash1), new Document(this.docHash2) ];
-    documents: Array<Document> = [new Document(this.docHash1), new Document(this.docHash2) ];
+    documents: Array<Document> = [new Document(this.docHash1) ];
 
     // APPLICATION STATE
     searchResults: Array<Document> = this.documents
