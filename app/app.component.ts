@@ -15,6 +15,7 @@ enum tocModeType {searchResults, documentContents};
 
 export class AppComponent {
 
+    // Initial data
     docHash1 =  new DocumentHash ({
         id: '1', author_id: '11',
         title: 'Test',
@@ -32,11 +33,12 @@ export class AppComponent {
     })
 
 
-    documents: Document[] = [new Document(this.docHash1), new Document(this.docHash2) ];
+    // documents: Document[] = [new Document(this.docHash1), new Document(this.docHash2) ];
+    documents: Array<Document> = [new Document(this.docHash1), new Document(this.docHash2) ];
 
     // APPLICATION STATE
-    searchResults: Document[] = this.documents
-    documentContents: Document[] = []
+    searchResults: Array<Document> = this.documents
+    documentContents: Array<Document> = []
     activeDocument:Document = this.documents[0];  // XX:DANGER
     parentDocument:Document
     tocMode: tocModeType = tocModeType.searchResults
@@ -174,8 +176,6 @@ export class AppComponent {
 
     selectDocument(doc:Document) {
 
-        var documentParentId = -3
-        var systemParentId
 
         if (doc.rendered_text === undefined) {
 
@@ -205,21 +205,8 @@ export class AppComponent {
 
                     console.log('(2) system parent: ' + this.parentDocument.links.parent.id)
                 }
-
             }
-            //documentParentId = parseInt(doc.getParentId())
-
         }
-
-
-
-
-        // this.parentDocument == undefined ? systemParentId = 0 : systemParentId = this.parentDocument.links.parent.id
-        // systemParentId == docParentId ? this.tocMode = tocModeType.documentContents : this.tocMode = tocModeType.searchResults
-
-
-        // console.log('docId = ' + this.activeDocument.id, + ', docParentId = ' + documentParentId + ', systemParentId = ' + systemParentId)
-        console.log(this.activeDocument);
     }
 
 

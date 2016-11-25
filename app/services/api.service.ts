@@ -21,8 +21,8 @@ export class ApiService {
     // Resolve HTTP using the constructor
     constructor (private http: Http) {}
     // private instance variable to hold base url
-    // private apiUrl = 'http://localhost:2300/api/comments';
-    private apiUrl = 'http://localhost:2300/v1';
+    // private apiUrl = 'http://localhost:2300/v1';
+    private apiUrl = 'http://xdoc-api.herokuapp.com/v1';
 
     // Fetch document
     // getDocument(id: string) : Observable<Document>{
